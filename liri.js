@@ -32,16 +32,133 @@ var myTweets = function() {
     if (error) {
       console.log(error);
     } else {
-      tweets = response.statuses;
+      var tweets = response.statuses;
       //console.log(response.statuses);
       //console.log(tweets);
 
       console.log("Here are your last 20 tweets!");
       for (var i = 0; i < tweets.length; i++) {
-        console.log(i + 1 + ") " +  tweets[i].text + "\n created at: " + tweets[i].created_at);
+        console.log(
+          i +
+            1 +
+            ") " +
+            tweets[i].text +
+            "\n created at: " +
+            tweets[i].created_at
+        );
       }
     }
   });
 };
 
-myTweets();
+var getSong = function() {
+  // grab the user request and fill in the spaces with placeholders
+
+  var song = userReq.split(" ");
+  var songString = song[0];
+
+  for (var i = 1; i < song.length; i++) {
+    songString = songString + "%20" + song[i];
+  }
+
+  // now we have the same song with the spaces filled in
+  //console.log(songString);
+
+  // call the spotify api next to get the song the user input
+
+  spotify
+    .search({ type: "track", query: songString, limit: 1 })
+    .then(function(response) {
+      //console.log(response);
+      //console.log(response.tracks.items);
+
+      var artist = response.tracks.items[0].artists[0].name;
+      var name = response.tracks.items[0].name;
+      //music.preview_url, music.album.name
+      var linkPre = response.tracks.items[0].preview_url;
+      var album = response.tracks.items[0].album.name;
+
+      console.log(
+        "Artist: " +
+          artist +
+          "\n" +
+          "Name: " +
+          name +
+          "\n" +
+          "Link: " +
+          linkPre +
+          "\n" +
+          "Album: " +
+          album +
+          "\n"
+      );
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+};
+
+var movieThis = function() {
+
+  var movies = userReq.split(" ");
+  var movieString = movies[0];
+
+  omdbCall();
+ 
+  
+};
+
+var omdbCall = function() {
+  request(
+    // "https://www.omdbapi.com/?t=" +
+    //   movieString +
+    //   "&y=&plot=short&apikey=trilogy"
+      
+      "https://www.omdbapi.com/?t=leon the professional&y=&plot=short&apikey=trilogy",
+    function(error, response, body) {
+      if (error) {
+        console.log(error);
+      } else if (!error && response.statusCode === 200) {
+        omdbInfo = JSON.parse(body);
+
+        title = omdbInfo.Title;
+        year = omdbInfo.Year;
+        imdbRating = omdbInfo.imdbRating;
+        tomato = omdbInfo.Ratings[2].value;
+        country = omdbInfo.Country;
+        lang = omdbInfo.Language;
+        plot = omdbInfo.Plot;
+        actors = omdbInfo.actors;
+
+        console.log(
+          "Title: " +
+            title +
+            "\n" +
+            "Year: " +
+            year +
+            "\n" +
+            "Imdb Rating: " +
+            imdbRating +
+            "\n" +
+            "Rotten Tomatoes Score: " +
+            tomato +
+            "\n" +
+            "Country: " +
+            country +
+            "\n" +
+            "Language: " +
+            lang +
+            "\n" +
+            "Plot: " +
+            plot +
+            "\n" +
+            "Actors: " +
+            actors +
+            "\n"
+        );
+      }
+    }
+  );
+};
+
+movieThis();
