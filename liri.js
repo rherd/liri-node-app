@@ -5,6 +5,7 @@ require("dotenv").config();
 var Spotify = require("node-spotify-api");
 var Twitter = require("twitter");
 var request = require("request");
+var fs = require("fs");
 
 // add code required to import the keys.js file and store it in a variable
 var keys = require("./keys.js");
@@ -99,22 +100,25 @@ var getSong = function() {
 };
 
 var movieThis = function() {
-
   var movies = userReq.split(" ");
   var movieString = movies[0];
 
-  omdbCall();
- 
-  
+  for (var i = 1; i < movies.length; i++) {
+    movieString = movieString + "%20" + movies[i];
+  }
+
+  omdbCall(movieString);
 };
 
-var omdbCall = function() {
+var omdbCall = function(movieString) {
   request(
     // "https://www.omdbapi.com/?t=" +
     //   movieString +
     //   "&y=&plot=short&apikey=trilogy"
-      
-      "https://www.omdbapi.com/?t=leon the professional&y=&plot=short&apikey=trilogy",
+
+    "https://www.omdbapi.com/?t=" +
+      movieString +
+      "&y=&plot=short&apikey=trilogy",
     function(error, response, body) {
       if (error) {
         console.log(error);
@@ -124,11 +128,11 @@ var omdbCall = function() {
         title = omdbInfo.Title;
         year = omdbInfo.Year;
         imdbRating = omdbInfo.imdbRating;
-        tomato = omdbInfo.Ratings[2].value;
+        tomato = omdbInfo.Ratings[1].Value;
         country = omdbInfo.Country;
         lang = omdbInfo.Language;
         plot = omdbInfo.Plot;
-        actors = omdbInfo.actors;
+        actors = omdbInfo.Actors;
 
         console.log(
           "Title: " +
@@ -161,4 +165,60 @@ var omdbCall = function() {
   );
 };
 
-movieThis();
+if (command === "my-tweets") {
+  myTweets();
+} else if (command === "spotify-this-song" && userReq) {
+  getSong();
+} else if (command === "spotify-this-song" && userReq === undefined) {
+
+  spotify
+    .request("https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE")
+    .then(function(response) {
+      
+      var artist = response.artists[0].name;
+      var name = response.name;
+      var linkPre = response.preview_url;
+      var album = response.album.name;
+
+
+      console.log(
+        "Artist: " +
+          artist +
+          "\n" +
+          "Name: " +
+          name +
+          "\n" +
+          "Link: " +
+          linkPre +
+          "\n" +
+          "Album: " +
+          album +
+          "\n"
+      );
+    })
+    .catch(function(err) {
+      console.error("Error occurred: " + err);
+    });
+} else if (command === "movie-this" && userReq) {
+  movieThis();
+} else if (command === "movie-this" && userReq === undefined) {
+  omdbCall("mr%20nobody");
+} else if (command === "do-what-it-says" && userReq === undefined) {
+  fs.readFile("random.txt", "utf8", function(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      var argArr = data.split(",");
+      command = argArr[0];
+      userReq = argArr[1];
+
+      if (command === "my-tweets") {
+        myTweets();
+      } else if (command === "spotify-this-song") {
+        getSong();
+      } else if (command === "movie-this") {
+        movieThis();
+      }
+    }
+  });
+}
