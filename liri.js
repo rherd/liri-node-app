@@ -14,6 +14,9 @@ var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 
+var textFile = "log.txt";
+var message = "";
+
 // make it so that liri can take in the following commands:
 // 'my-tweets', 'spotify-this-song', 'movie-this', 'do-what-is-says'
 
@@ -39,14 +42,28 @@ var myTweets = function() {
 
       console.log("Here are your last 20 tweets!");
       for (var i = 0; i < tweets.length; i++) {
-        console.log(
+        message =
           i +
-            1 +
-            ") " +
-            tweets[i].text +
-            "\n created at: " +
-            tweets[i].created_at
-        );
+          1 +
+          ") " +
+          tweets[i].text +
+          "\n created at: " +
+          tweets[i].created_at +
+          "\n";
+
+        console.log(message);
+
+        fs.appendFile(textFile, message, function(err) {
+          // If an error was experienced we say it.
+          if (err) {
+            console.log(err);
+          }
+
+          // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+          else {
+            console.log("Content added to log.txt!");
+          }
+        });
       }
     }
   });
@@ -79,20 +96,33 @@ var getSong = function() {
       var linkPre = response.tracks.items[0].preview_url;
       var album = response.tracks.items[0].album.name;
 
-      console.log(
+      message =
         "Artist: " +
-          artist +
-          "\n" +
-          "Name: " +
-          name +
-          "\n" +
-          "Link: " +
-          linkPre +
-          "\n" +
-          "Album: " +
-          album +
-          "\n"
-      );
+        artist +
+        "\n" +
+        "Name: " +
+        name +
+        "\n" +
+        "Link: " +
+        linkPre +
+        "\n" +
+        "Album: " +
+        album +
+        "\n";
+
+      console.log(message);
+
+      fs.appendFile(textFile, message, function(err) {
+        // If an error was experienced we say it.
+        if (err) {
+          console.log(err);
+        }
+
+        // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+        else {
+          console.log("Content added to log.txt!");
+        }
+      });
     })
     .catch(function(err) {
       console.log(err);
@@ -134,32 +164,45 @@ var omdbCall = function(movieString) {
         plot = omdbInfo.Plot;
         actors = omdbInfo.Actors;
 
-        console.log(
+        message =
           "Title: " +
-            title +
-            "\n" +
-            "Year: " +
-            year +
-            "\n" +
-            "Imdb Rating: " +
-            imdbRating +
-            "\n" +
-            "Rotten Tomatoes Score: " +
-            tomato +
-            "\n" +
-            "Country: " +
-            country +
-            "\n" +
-            "Language: " +
-            lang +
-            "\n" +
-            "Plot: " +
-            plot +
-            "\n" +
-            "Actors: " +
-            actors +
-            "\n"
-        );
+          title +
+          "\n" +
+          "Year: " +
+          year +
+          "\n" +
+          "Imdb Rating: " +
+          imdbRating +
+          "\n" +
+          "Rotten Tomatoes Score: " +
+          tomato +
+          "\n" +
+          "Country: " +
+          country +
+          "\n" +
+          "Language: " +
+          lang +
+          "\n" +
+          "Plot: " +
+          plot +
+          "\n" +
+          "Actors: " +
+          actors +
+          "\n";
+
+        console.log(message);
+
+        fs.appendFile(textFile, message, function(err) {
+          // If an error was experienced we say it.
+          if (err) {
+            console.log(err);
+          }
+
+          // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+          else {
+            console.log("Content added to log.txt!");
+          }
+        });
       }
     }
   );
@@ -170,31 +213,41 @@ if (command === "my-tweets") {
 } else if (command === "spotify-this-song" && userReq) {
   getSong();
 } else if (command === "spotify-this-song" && userReq === undefined) {
-
   spotify
     .request("https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE")
     .then(function(response) {
-      
       var artist = response.artists[0].name;
       var name = response.name;
       var linkPre = response.preview_url;
       var album = response.album.name;
 
-
-      console.log(
+      message =
         "Artist: " +
-          artist +
-          "\n" +
-          "Name: " +
-          name +
-          "\n" +
-          "Link: " +
-          linkPre +
-          "\n" +
-          "Album: " +
-          album +
-          "\n"
-      );
+        artist +
+        "\n" +
+        "Name: " +
+        name +
+        "\n" +
+        "Link: " +
+        linkPre +
+        "\n" +
+        "Album: " +
+        album +
+        "\n";
+
+      console.log(message);
+
+      fs.appendFile(textFile, message, function(err) {
+        // If an error was experienced we say it.
+        if (err) {
+          console.log(err);
+        }
+
+        // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+        else {
+          console.log("Content added to log.txt!");
+        }
+      });
     })
     .catch(function(err) {
       console.error("Error occurred: " + err);
@@ -221,4 +274,6 @@ if (command === "my-tweets") {
       }
     }
   });
+} else {
+  console.log("You're not using it right!");
 }
