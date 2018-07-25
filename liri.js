@@ -64,8 +64,8 @@ var myTweets = function() {
             console.log("Content added to log.txt!");
           }
         });
-      }
-    }
+      };
+    };
   });
 };
 
@@ -77,7 +77,7 @@ var getSong = function() {
 
   for (var i = 1; i < song.length; i++) {
     songString = songString + "%20" + song[i];
-  }
+  };
 
   // now we have the same song with the spaces filled in
   //console.log(songString);
@@ -121,7 +121,7 @@ var getSong = function() {
         // If no error is experienced, we'll log the phrase "Content Added" to our node console.
         else {
           console.log("Content added to log.txt!");
-        }
+        };
       });
     })
     .catch(function(err) {
@@ -135,7 +135,7 @@ var movieThis = function() {
 
   for (var i = 1; i < movies.length; i++) {
     movieString = movieString + "%20" + movies[i];
-  }
+  };
 
   omdbCall(movieString);
 };
@@ -201,11 +201,10 @@ var omdbCall = function(movieString) {
           // If no error is experienced, we'll log the phrase "Content Added" to our node console.
           else {
             console.log("Content added to log.txt!");
-          }
+          };
         });
-      }
-    }
-  );
+      };
+    });
 };
 
 if (command === "my-tweets") {
@@ -272,8 +271,8 @@ if (command === "my-tweets") {
       } else if (command === "movie-this") {
         movieThis();
       }
-    }
+    };
   });
 } else {
   console.log("You're not using it right!");
-}
+};

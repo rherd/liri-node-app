@@ -1,11 +1,47 @@
-1) tweet2
+1) tweet 20
+ created at: Tue Jul 24 21:03:48 +0000 2018
+2) tweet 19
+ created at: Tue Jul 24 21:03:42 +0000 2018
+5) tweet 16
+ created at: Tue Jul 24 20:56:16 +0000 2018
+3) tweet 18
+ created at: Tue Jul 24 20:56:26 +0000 2018
+6) tweet 15
+ created at: Tue Jul 24 20:56:10 +0000 2018
+7) tweet 14
+ created at: Tue Jul 24 20:56:04 +0000 2018
+4) tweet 17
+ created at: Tue Jul 24 20:56:21 +0000 2018
+10) bootcamp
+ created at: Tue Jul 24 20:55:04 +0000 2018
+11) for coding
+ created at: Tue Jul 24 20:54:59 +0000 2018
+9) tweet 12
+ created at: Tue Jul 24 20:55:53 +0000 2018
+12) assignment
+ created at: Tue Jul 24 20:54:45 +0000 2018
+8) tweet 13
+ created at: Tue Jul 24 20:55:59 +0000 2018
+14) for
+ created at: Tue Jul 24 20:54:37 +0000 2018
+16) tweets
+ created at: Tue Jul 24 20:54:31 +0000 2018
+17) these
+ created at: Tue Jul 24 20:54:27 +0000 2018
+18) tweet with something interesting
+ created at: Tue Jul 24 20:53:44 +0000 2018
+15) are
+ created at: Tue Jul 24 20:54:34 +0000 2018
+19) this is another tweet
+ created at: Tue Jul 24 20:53:00 +0000 2018
+20) tweet2
  created at: Mon Jul 23 06:58:29 +0000 2018
-2) project tweet
- created at: Mon Jul 23 06:52:39 +0000 2018
-Artist: Anberlin
-Name: A Whisper & A Clamor
+13) an
+ created at: Tue Jul 24 20:54:41 +0000 2018
+Artist: Coheed and Cambria
+Name: Key Entity Extraction V: Sentry The Defiant
 Link: null
-Album: Cities
+Album: The Afterman: Descension
 Artist: Ace of Base
 Name: The Sign
 Link: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=a2aab080d566497b847c4cb87b6ec39d
@@ -18,31 +54,15 @@ Country: Belgium, Germany, Canada, France, USA, UK
 Language: English, Mohawk
 Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
 Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham
-Title: Léon: The Professional
-Year: 1994
-Imdb Rating: 8.6
-Rotten Tomatoes Score: 71%
-Country: France
-Language: English, Italian, French
-Plot: Mathilda, a 12-year-old girl, is reluctantly taken in by Léon, a professional assassin, after her family is murdered. Léon and Mathilda form an unusual relationship, as she becomes his protégée and learns the assassin's trade.
-Actors: Jean Reno, Gary Oldman, Natalie Portman, Danny Aiello
+Title: Captain America: The Winter Soldier
+Year: 2014
+Imdb Rating: 7.8
+Rotten Tomatoes Score: 89%
+Country: USA
+Language: English, French
+Plot: As Steve Rogers struggles to embrace his role in the modern world, he teams up with a fellow Avenger and S.H.I.E.L.D agent, Black Widow, to battle a new threat from history: an assassin known as the Winter Soldier.
+Actors: Chris Evans, Samuel L. Jackson, Scarlett Johansson, Robert Redford
 Artist: Backstreet Boys
 Name: I Want It That Way
 Link: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=a2aab080d566497b847c4cb87b6ec39d
 Album: The Hits--Chapter One
-Title: The Book of Life
-Year: 2014
-Imdb Rating: 7.3
-Rotten Tomatoes Score: 82%
-Country: USA
-Language: English, Spanish
-Plot: Manolo, a young man who is torn between fulfilling the expectations of his family and following his heart, embarks on an adventure that spans three fantastic worlds where he must face his greatest fears.
-Actors: Diego Luna, Zoe Saldana, Channing Tatum, Ron Perlman
-Artist: Ace of Base
-Name: The Sign
-Link: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=a2aab080d566497b847c4cb87b6ec39d
-Album: The Sign (US Album) [Remastered]
-Artist: Ace of Base
-Name: The Sign
-Link: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=a2aab080d566497b847c4cb87b6ec39d
-Album: The Sign (US Album) [Remastered]
